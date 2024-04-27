@@ -1,20 +1,23 @@
 import UserList from './UserList'
-import user from '@testing-library/user-event'
-import {render, waitFor, screen} from '@testing-library/react'
+import {render, screen, within} from '@testing-library/react'
 
 //test 1
-test('after submit, a new row is added', async () => {
+test('shows one line per user', async () => {
     //render
-    render([<UserList/>])
+    const mockUsers = [
+        { name: 'yamil', email: 'test@gmail.com' },
+        { name: 'jack', email: 'jack@gmail.com' }
+    ]
+    render([<UserList users={mockUsers}/>])
 
     //handler
-    const trs = screen.getAllByRole('row')
-    const button = screen.getByRole('button');
+    const rows = within(screen.getByTestId('users')).getAllByRole('row');
 
-    user.click(button)
+    //assertion   
+    expect(rows).toHaveLength(2);    
+})
 
-    //assertion
-    await waitFor(async () => {
-        expect(trs).toHaveLength(trs.length + 1);
-    })  
+//test 2
+test('render the name and email for each user', () => {
+
 })
