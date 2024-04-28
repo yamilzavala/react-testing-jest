@@ -1,6 +1,24 @@
 # Jest and React App
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
 
+# query methods
+all these function star with:
+    queryBy
+    queryAllBy
+    findBy
+    findAllBy
+
+Lookin for a single element:
+    getBy
+    queryBy
+    findBy    
+
+Lookin for a multiple elements:
+    getAllBy
+    queryAllBy
+    findAllBy    
+
+
 ## Available Scripts
 In the project directory, you can run:
 
@@ -16,6 +34,10 @@ You may also see any lint errors in the console.
 
 Launches the test runner in the interactive watch mode.\
 See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+
+### press 'p' to select a specific test (then enter the test file´s name)
+npm run test
+p --> UserForm.test.js
 
 ### `npm run build`
 
