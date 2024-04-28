@@ -44,3 +44,26 @@ test('its call onUserAdd when  a form is submitted', async () => {
     expect(mock).toHaveBeenCalled()
     expect(mock).toHaveBeenCalledWith({ name: 'yamil', email: 'test@gmail.com' })
 })
+
+//test 3
+test('empties the two inputs when the form is submitted', async () => {
+    //render
+    render(<UserForm onUserAdd={() => {}}/>)
+
+    //handler
+    const nameInput = screen.getByRole('textbox', {name: /name/i})
+    const emailInput = screen.getByRole('textbox', {name: /email/i})
+    const button = screen.getByRole('button')
+
+    await user.click(nameInput);
+    await user.keyboard('yamil');
+
+    await user.click(emailInput);
+    await user.keyboard('yamil@gmail.com');
+
+    await user.click(button);
+
+    //assertion
+    expect(nameInput).toHaveValue('');
+    expect(emailInput).toHaveValue('');
+})
