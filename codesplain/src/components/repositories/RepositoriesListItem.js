@@ -3,7 +3,10 @@ import FileIcon from '../tree/FileIcon';
 import RepositoriesSummary from './RepositoriesSummary';
 
 function RepositoriesListItem({ repository }) {
-  const { full_name, language, description, owner, name } = repository;
+  const { full_name, language, description, owner, name, html_url } = repository;
+
+  //debug bugfix
+  console.log('repository list item: ', repository)
 
   return (
     <div className="py-3 border-b flex">
@@ -15,6 +18,11 @@ function RepositoriesListItem({ repository }) {
         <p className="text-gray-500 italic py-1">{description}</p>
         <RepositoriesSummary repository={repository} />
       </div>
+      
+      {/* bugfix */}
+      <a target="_blank" href={html_url}>
+          <span className="font-bold">{html_url}</span>
+        </a>
     </div>
   );
 }
