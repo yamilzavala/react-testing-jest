@@ -1,11 +1,12 @@
 import { Link } from 'react-router-dom';
 import FileIcon from '../tree/FileIcon';
 import RepositoriesSummary from './RepositoriesSummary';
+import { MarkGithubIcon } from '@primer/octicons-react';
 
 function RepositoriesListItem({ repository }) {
   const { full_name, language, description, owner, name, html_url } = repository;
 
-  //debug bugfix
+  //debug fix to find the property that is missing
   console.log('repository list item: ', repository)
 
   return (
@@ -20,9 +21,11 @@ function RepositoriesListItem({ repository }) {
       </div>
       
       {/* bugfix */}
-      <a target="_blank" href={html_url}>
-          <span className="font-bold">{html_url}</span>
+      <div className="grow flex items-center justify-end pr-2">
+        <a target="_blank" href={html_url} aria-label='github repository'>
+            <MarkGithubIcon/>
         </a>
+      </div>
     </div>
   );
 }
