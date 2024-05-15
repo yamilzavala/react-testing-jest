@@ -8,6 +8,10 @@ function HomeRoute() {
   const { data: rustRepos } = useRepositories('stars:>10000 language:rust');
   const { data: goRepos } = useRepositories('stars:>10000 language:go');
 
+  //bug fix missing repos (java and python)
+  const { data: pythonRepos } = useRepositories('stars:>10000 language:python');
+  const { data: javaRepos } = useRepositories('stars:>10000 language:java');
+
   return (
     <div>
       <Hero />
@@ -22,6 +26,10 @@ function HomeRoute() {
         />
         <RepositoriesTable label="Most Popular Rust" repositories={rustRepos} />
         <RepositoriesTable label="Most Popular Go" repositories={goRepos} />
+
+        {/* bug fix missing repos (java and python) */}
+        <RepositoriesTable label="Most Popular Python" repositories={pythonRepos} />
+        <RepositoriesTable label="Most Popular Java" repositories={javaRepos} />
       </div>
     </div>
   );
